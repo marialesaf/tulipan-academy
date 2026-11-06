@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aprende a crear flores eternas con limpiapipas desde cero y conviértelas en un negocio. 12 módulos, +20 flores y hojas, certificado. 35 USD.">
+<meta property="og:title" content="Flores Eternas en Limpiapipas para Emprender">
+<meta property="og:image" content="img/portada.webp">
+<title>Flores Eternas en Limpiapipas</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ COLORES: cámbialos aquí ============ */
+  :root{
+    color-scheme:light;
+    --lila:#f1eafa;          /* fondos suaves */
+    --lila-fuerte:#8a4fd1;   /* botones y acentos */
+    --morado:#3d1f6b;        /* títulos y franja de precio */
+    --dorado:#c9a25c;        /* detalles dorados, como el certificado */
+    --texto:#2e2340;
+    --suave:#7a6c90;         /* textos secundarios */
+    --blanco:#fcfaff;
+    --sombra:61,31,107;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Poppins',system-ui,sans-serif;color:var(--texto);background:var(--blanco);line-height:1.6}
+  h1,h2,h3{font-family:'Playfair Display',Georgia,serif;color:var(--morado);line-height:1.25}
+  h2{font-size:clamp(1.6rem,4vw,2.3rem);text-align:center;margin-bottom:1.5rem;text-wrap:balance}
+  section{padding-block:64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .contenedor{max-width:900px;margin:0 auto}
+  .centro{text-align:center}
+  .fondo-lila{background:var(--lila)}
+  .fondo-morado{background:var(--morado);color:#fff}
+  .fondo-morado h2{color:#fff}
+  img.foto-real{width:100%;max-width:100%;height:auto;border-radius:18px;display:block;box-shadow:0 10px 30px rgba(var(--sombra),.16)}
+  .foto-yo{width:100%;max-width:320px;aspect-ratio:1;object-fit:cover;object-position:52% 30%;border-radius:50%;display:block;margin:0 auto;border:6px solid #fff;box-shadow:0 10px 30px rgba(var(--sombra),.2)}
+
+  .boton{display:inline-block;background:var(--lila-fuerte);color:#fff;text-decoration:none;font-weight:600;font-size:1.15rem;padding:18px 44px;border-radius:50px;box-shadow:0 8px 20px rgba(138,79,209,.4);transition:transform .2s}
+  .boton:hover{transform:scale(1.05)}
+  .boton:focus-visible{outline:3px solid var(--dorado);outline-offset:3px}
+  .seguro{font-size:.85rem;margin-top:12px;opacity:.8}
+
+  /* 1. Portada */
+  .portada{background:linear-gradient(160deg,var(--lila) 0%,#fff 100%);padding-block:36px}
+  .banner{max-width:1040px;display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:40px;align-items:center}
+  .banner img{box-shadow:0 14px 34px rgba(var(--sombra),.22)}
+  .banner-texto{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+  .etiqueta{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--lila-fuerte);font-weight:600}
+  .portada h1{font-size:clamp(1.6rem,3.4vw,2.4rem);text-wrap:balance}
+  .portada p{font-size:1.05rem;max-width:580px}
+  @media(max-width:760px){
+    .banner{grid-template-columns:1fr;gap:24px;text-align:center}
+    .banner img{max-width:260px;margin:0 auto}
+    .banner-texto{align-items:center}
+  }
+
+  /* 2. Aprenderás */
+  .lista{list-style:none;display:grid;gap:14px;max-width:720px;margin:0 auto}
+  .lista li{background:#fff;padding:14px 18px 14px 50px;border-radius:12px;position:relative;box-shadow:0 2px 10px rgba(var(--sombra),.07)}
+  .lista li::before{content:"✿";position:absolute;left:18px;top:12px;color:var(--lila-fuerte);font-size:1.15rem}
+
+  /* 3. Foto + texto */
+  .intro-flores{max-width:680px;margin:0 auto 28px;font-size:1.05rem}
+
+  /* 5. Módulos */
+  details{background:#fff;border-radius:12px;margin-bottom:12px;box-shadow:0 2px 10px rgba(var(--sombra),.07);overflow:hidden}
+  summary{cursor:pointer;padding:18px 20px;font-weight:600;color:var(--morado);list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.5rem;color:var(--lila-fuerte)}
+  details[open] summary::after{content:"–"}
+  summary:focus-visible{outline:2px solid var(--lila-fuerte);outline-offset:-2px}
+  summary>span{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .num-mod{font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--lila-fuerte);font-weight:600}
+  .n-lec{font-weight:400;font-size:.8rem;color:var(--suave);white-space:nowrap;margin-left:auto;padding:0 12px}
+  .resumen-curso{text-align:center;margin:-.8rem 0 1.6rem;color:var(--morado);font-weight:500}
+  details ol{padding:0 20px 18px 44px}
+  details li{margin-bottom:6px;padding-left:4px}
+  .resp{padding:0 20px 18px;display:grid;gap:10px}
+  .resp ol{padding:0 0 0 22px}
+  .correo{font-weight:600;color:var(--morado);user-select:all;word-break:break-all}
+
+  /* 6. Incluye */
+  .tarjetas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px}
+  .tarjeta{background:#fff;border-radius:16px;padding:26px 20px;text-align:center;box-shadow:0 2px 10px rgba(var(--sombra),.08)}
+  .tarjeta .icono{font-size:2.1rem;margin-bottom:8px}
+  .tarjeta h3{font-size:1.15rem;margin-bottom:6px}
+
+  /* Certificado */
+  .certificado{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:32px;align-items:center}
+  .certificado h2{text-align:left}
+  @media(max-width:760px){.certificado{grid-template-columns:1fr}.certificado h2{text-align:center}.certificado .txt{text-align:center}}
+
+  /* 8. Sobre mí */
+  .sobre{display:grid;grid-template-columns:1fr 1.4fr;gap:32px;align-items:center}
+  @media(max-width:700px){.sobre{grid-template-columns:1fr}.sobre h2{text-align:center!important}}
+  .texto-sobre{min-width:0;display:grid;gap:14px}
+  .cargo{color:var(--lila-fuerte);font-weight:500;font-size:.85rem;letter-spacing:1px;text-transform:uppercase}
+  .logros{list-style:none;display:grid;gap:10px}
+  .logros li{background:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 2px 10px rgba(var(--sombra),.06)}
+  .logros b{color:var(--morado)}
+  .cierre-sobre{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--morado);font-style:italic}
+  .forma{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px;margin-top:40px}
+
+  /* 9. Bonos */
+  .bonos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:18px}
+  .bono{background:#fff;border-radius:16px;padding:24px 20px;text-align:center;box-shadow:0 2px 10px rgba(var(--sombra),.08);border-top:4px solid var(--dorado)}
+  .bono small{display:block;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--dorado);font-weight:600;margin-bottom:6px}
+  .bono h3{font-size:1.1rem}
+
+  /* 10. Precio */
+  .caja-precio{background:#fff;color:var(--texto);max-width:520px;margin:0 auto;border-radius:24px;padding:36px 24px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+  .incluye-precio{list-style:none;display:grid;gap:6px;text-align:left;max-width:340px;margin:16px auto 22px;font-size:.92rem}
+  .incluye-precio li::before{content:"✓ ";color:var(--lila-fuerte);font-weight:700}
+  .precio{font-family:'Playfair Display',serif;font-size:3.4rem;color:var(--lila-fuerte);font-weight:700;margin:4px 0 4px;line-height:1.1}
+  .precio span{font-size:1.4rem}
+  .garantia{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:24px;font-size:.9rem;text-align:left}
+  .garantia b{font-size:2rem}
+
+  footer{text-align:center;padding:28px 16px;font-size:.8rem;color:var(--suave)}
+  @media(prefers-reduced-motion:reduce){.boton{transition:none}.boton:hover{transform:none}}
+</style>
+</head>
+<body>
+
+
+<!-- ============ 1. PORTADA ============ -->
+<section class="portada">
+  <div class="contenedor banner">
+    <img class="foto-real" src="img/portada.webp" alt="Flores Eternas en Limpiapipas para Emprender, con la instructora Claudia Riveros" width="300" height="300">
+    <div class="banner-texto">
+      <p class="etiqueta">Curso online · 12 módulos · +20 flores y hojas</p>
+      <h1>Convierte los limpiapipas en una oportunidad de ingresos con tus propias manos</h1>
+      <p>En <b>Flores Eternas en Limpiapipas para Emprender</b> aprenderás desde los conceptos básicos hasta técnicas avanzadas: preparación, selección de materiales, armado y acabados profesionales listos para vender.</p>
+      <a class="boton" href="https://go.hotmart.com/A108359994E?ap=f365" target="_blank" rel="noopener">¡QUIERO EMPEZAR!</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. QUÉ VAS A APRENDER ============ -->
+<section class="fondo-lila">
+  <div class="contenedor">
+    <h2>Qué aprenderás</h2>
+    <ul class="lista">
+      <li>Fundamentos del trabajo con limpiapipas: tipos, manejo y estructura.</li>
+      <li>Técnicas de armado para lograr flores realistas y profesionales.</li>
+      <li>Combinación de colores y diseño creativo.</li>
+      <li>Elaboración de hojas.</li>
+      <li>Creación de flores básicas y avanzadas, paso a paso.</li>
+      <li>Técnicas adicionales como pintado, combinación de colores y efectos especiales.</li>
+      <li>Empaque y presentación para vender tus creaciones.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 3. FOTO + BOTÓN ============ -->
+<section>
+  <div class="contenedor centro">
+    <p class="intro-flores">Crearás hojas, tallos y una gran variedad de flores decorativas, desde diseños básicos hasta composiciones avanzadas como <b>rosas, orquídeas, peonías, hortensias y más</b>. Ideales para bouquets, regalos, decoración y productos personalizados.</p>
+    <img class="foto-real" src="img/claudia-taller.webp" loading="lazy" alt="Claudia Riveros en su taller rodeada de flores hechas con limpiapipas" width="800" height="478" style="max-width:760px;margin:0 auto 32px">
+    <a class="boton" href="https://go.hotmart.com/A108359994E?ap=f365" target="_blank" rel="noopener">¡QUIERO EMPEZAR!</a>
+    <p class="seguro">🔒 Pago seguro · Acceso inmediato</p>
+  </div>
+</section>
+
+<!-- ============ 5. CONTENIDO DEL CURSO ============ -->
+<section class="fondo-lila">
+  <div class="contenedor">
+    <h2>Contenido del curso</h2>
+    <p class="resumen-curso">12 módulos · 53 clases · +20 flores y hojas</p>
+    <details>
+      <summary><span><span class="num-mod">Módulo 01</span> Introducción</span><small class="n-lec">4 clases</small></summary>
+      <ol><li>Bienvenida</li><li>Mi historia</li><li>Recomendaciones antes de comenzar</li><li>Comunidad y soporte</li></ol>
+    </details>
+    <details>
+      <summary><span><span class="num-mod">Módulo 02</span> Materiales y herramientas</span><small class="n-lec">3 clases</small></summary>
+      <ol><li>Materiales y herramientas</li><li>Listado de proveedores</li><li>Cómo elegir los colores</li></ol>
+    </details>
+    <details>
+      <summary><span><span class="num-mod">Módulo 03</span> Hojas y botones</span><small class="n-lec">9 clases</small></summary>
+      <ol><li>Hoja tejida en gota</li><li>Hoja tejida ovalada</li><li>Hoja lisa pequeña</li><li>Hoja lisa grande</li><li>Hoja flor de loto</li><li>Hoja encrespada</li><li>Botón pequeño</li><li>Botón abierto</li><li>Base tipo ramo decorativo</li></ol>
+    </details>
+    <details>
+      <summary><span><span class="num-mod">Módulo 04</span> Flores sencillas</span><small class="n-lec">13 clases</small></summary>
+      <ol><li>Lavanda sencilla</li><li>Lavanda racimo</li><li>Cosmos</li><li>Flor nube</li><li>Margarita</li><li>Amapola</li><li>Clavel</li><li>Tulipán</li><li>Gerbera</li><li>Girasol</li><li>Cartucho</li><li>Follaje decorativo</li><li>Plumería</li></ol>
+    </details>
+    <details>
+      <summary><span><span class="num-mod">Módulo 05</span> Flores avanzadas</span><small class="n-lec">5 clases</small></summary>
+      <ol><li>Magnolia</li><li>Lirio</li><li>Dalia</li><li>Flor de cerezo</li><li>Orquídea</li></ol>
+    </details>
+    <details>
+      <summary><span><span class="num-mod">Módulo 06</span> Rosa</span><small class="n-lec">2 clases</small></summary>
+      <ol><li>Elaboración de las partes de la rosa</li><li>Elaboración de hojas y armado</li></ol>
+    </details>
+    <details>
+      <summary><span><span class="num-mod">Módulo 07</span> Astromelia</span><small class="n-lec">2 clases</small></summary>
+      <ol><li>Elaboración de pétalos</li><li>Elaboración de hojas y armado</li></ol>
+    </details>
+    <details>
+      <summary><span><span class="num-mod">Módulo 08</span> Peonía</span><small class="n-lec">2 clases</small></summary>
+      <ol><li>Elaboración de pétalos</li><li>Elaboración de hojas y armado</li></ol>
+    </details>
+    <details>
+      <summary><span><span class="num-mod">Módulo 09</span> Hortensia</span><small class="n-lec">3 clases</small></summary>
+      <ol><li>Elaboración de pétalos</li><li>Elaboración de hojas</li><li>Armado de la flor</li></ol>
+    </details>
+    <details>
+      <summary><span><span class="num-mod">Módulo 10</span> Flor de loto</span><small class="n-lec">2 clases</small></summary>
+      <ol><li>Elaboración de pétalos</li><li>Elaboración de hojas y armado</li></ol>
+    </details>
+    <details>
+      <summary><span><span class="num-mod">Módulo 11</span> Emprendimiento</span><small class="n-lec">4 clases</small></summary>
+      <ol><li>Todo lo necesario para empezar a vender tus flores</li><li>Empaque y decoración profesional</li><li>E-book de empaque incluido</li><li>Estrategias para comercializar y vender</li></ol>
+    </details>
+    <details>
+      <summary><span><span class="num-mod">Módulo 12</span> Bonos exclusivos</span><small class="n-lec">4 clases</small></summary>
+      <ol><li>Flores planchadas</li><li>Pintar limpiapipas</li><li>Pintar con sombras y crayolas</li><li>Flores de 2 colores</li></ol>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 6. INCLUYE ============ -->
+<section>
+  <div class="contenedor">
+    <h2>Además, incluye</h2>
+    <div class="tarjetas">
+      <div class="tarjeta"><div class="icono">🎥</div><h3>Clases en video</h3><p>Paso a paso, para verlas desde el celular o el computador, a tu ritmo.</p></div>
+      <div class="tarjeta"><div class="icono">🧰</div><h3>Lista de materiales</h3><p>Los materiales y herramientas esenciales para empezar.</p></div>
+      <div class="tarjeta"><div class="icono">📋</div><h3>Proveedores recomendados</h3><p>Dónde conseguir tus limpiapipas y materiales.</p></div>
+      <div class="tarjeta"><div class="icono">💼</div><h3>Módulo de emprendimiento</h3><p>Empaque, presentación y estrategias para vender, con e-book incluido.</p></div>
+      <div class="tarjeta"><div class="icono">💬</div><h3>Comunidad privada</h3><p>Grupo de WhatsApp para resolver tus dudas en tiempo real.</p></div>
+      <div class="tarjeta"><div class="icono">🎁</div><h3>Bonos exclusivos</h3><p>Técnicas adicionales de pintado y efectos especiales.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. AL TERMINAR ============ -->
+<section class="fondo-lila">
+  <div class="contenedor">
+    <h2>Cuando termines, tendrás...</h2>
+    <ul class="lista">
+      <li>Más de 20 flores y hojas que sabrás hacer tú misma.</li>
+      <li>Las técnicas para que tus flores se vean realistas y profesionales.</li>
+      <li>Ideas de empaque y presentación listas para vender.</li>
+      <li>Un producto nuevo, creativo y rentable para tu negocio, aunque hoy empieces desde cero.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CERTIFICADO ============ -->
+<section>
+  <div class="contenedor certificado">
+    <img class="foto-real" src="img/certificado.webp" loading="lazy" alt="Certificado de logro del curso Flores Eternas en Limpiapipas para Emprender" width="1100" height="778">
+    <div class="txt">
+      <h2>Tu certificado</h2>
+      <p>Al terminar todas las clases recibes tu certificado de participación del programa <b>Flores Eternas en Limpiapipas para Emprender</b>, firmado por tu instructora.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. SOBRE MÍ ============ -->
+<section class="fondo-lila">
+  <div class="contenedor">
+    <div class="sobre">
+      <img class="foto-yo" src="img/claudia-taller.webp" loading="lazy" alt="Claudia Riveros, instructora del curso">
+      <div class="texto-sobre">
+        <p class="cargo">Tu instructora</p>
+        <h2 style="text-align:left;margin-bottom:0">Hola, soy Claudia Riveros</h2>
+        <p>Soy empresaria y diseñadora floral especializada en creaciones con limpiapipas. Antes de llegar a este arte dirigí mi propia empresa, un camino que me enseñó disciplina, liderazgo y visión de negocio. Cuando tuve que cerrarla temporalmente, encontré en este oficio una terapia y una gran motivación para reinventarme.</p>
+        <p>Hoy disfruto compartir este arte, porque más allá de la técnica tiene el poder de traer paz y alegría a quien lo practica.</p>
+        <ul class="logros">
+          <li><b>Múltiples técnicas</b> de diseño floral con limpiapipas.</li>
+          <li><b>Experiencia real</b> como empresaria y emprendedora.</li>
+          <li><b>Aprendizaje aplicable</b> a tu propio negocio creativo.</li>
+        </ul>
+        <p class="cierre-sobre">Mi propósito es que no solo aprendas a crear flores hermosas, sino que descubras una herramienta para tu bienestar y, si lo deseas, para construir tu propio emprendimiento.</p>
+      </div>
+    </div>
+    <div class="forma">
+      <div class="tarjeta"><div class="icono">👣</div><h3>Paso a paso desde cero</h3><p>Explico cada técnica de forma clara y detallada para que nadie se quede atrás.</p></div>
+      <div class="tarjeta"><div class="icono">💬</div><h3>Acompañamiento</h3><p>Estaré en el grupo de WhatsApp para resolver tus dudas en tiempo real.</p></div>
+      <div class="tarjeta"><div class="icono">🌿</div><h3>También es terapia</h3><p>Un curso pensado para que encuentres paz, tranquilidad y creatividad en cada clase.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. BONOS ============ -->
+<section>
+  <div class="contenedor">
+    <h2>🎁 Bonos exclusivos</h2>
+    <div class="bonos">
+      <div class="bono"><small>Bono 1</small><h3>Flores planchadas</h3></div>
+      <div class="bono"><small>Bono 2</small><h3>Pintar limpiapipas</h3></div>
+      <div class="bono"><small>Bono 3</small><h3>Pintar con sombras y crayolas</h3></div>
+      <div class="bono"><small>Bono 4</small><h3>Flores de 2 colores</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. PRECIO + GARANTÍA ============ -->
+<section class="fondo-morado" id="precio">
+  <div class="contenedor">
+    <div class="caja-precio">
+      <p>Accede hoy a todo el curso por solo:</p>
+      <div class="precio">35 <span>USD</span></div>
+      <ul class="incluye-precio">
+        <li>12 módulos con 53 clases en video</li>
+        <li>4 bonos exclusivos</li>
+        <li>Módulo de emprendimiento y e-book de empaque</li>
+        <li>Grupo privado de WhatsApp</li>
+        <li>Certificado al finalizar</li>
+      </ul>
+      <a class="boton" href="https://go.hotmart.com/A108359994E?ap=f365" target="_blank" rel="noopener">¡COMPRAR AHORA!</a>
+      <p class="seguro">🔒 Pago 100% seguro · Acceso inmediato a tu correo</p>
+      <div class="garantia"><b>🛡️</b><span><b style="font-size:1rem">Garantía de 7 días.</b> Si el curso no es para ti, te devolvemos tu dinero completo.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. PREGUNTAS FRECUENTES ============ -->
+<section>
+  <div class="contenedor">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Para quién es este curso?</summary><div class="resp"><p>Es ideal tanto si estás comenzando desde cero como si deseas agregar un nuevo producto creativo y rentable a tu negocio.</p></div></details>
+    <details><summary>¿Necesito experiencia?</summary><div class="resp"><p>No. Empezamos con los fundamentos del trabajo con limpiapipas y avanzamos paso a paso hasta las flores más elaboradas.</p></div></details>
+    <details><summary>¿En qué idioma es el curso?</summary><div class="resp"><p>Todo el curso es en español.</p></div></details>
+    <details><summary>¿Cómo funciona el plazo de garantía?</summary><div class="resp"><p>Tienes 7 días para pedir el reembolso total de tu compra si el curso no es lo que esperabas.</p></div></details>
+    <details><summary>¿Recibo certificado?</summary><div class="resp"><p>Sí. Al terminar todas las clases recibes tu certificado de participación.</p></div></details>
+    <details><summary>¿Cómo accedo al curso?</summary><div class="resp">
+      <p>Recibirás el acceso en el correo con el que te inscribas al pagar, por eso es importante que esté bien escrito. Puedes ver las clases en computadora, celular o tablet.</p>
+      <ol>
+        <li>Inicia sesión en Hotmart haciendo clic en "Entrar".</li>
+        <li>Ve al menú lateral y después a "Mi cuenta".</li>
+        <li>Haz clic en "Mis compras" y allí encontrarás el curso.</li>
+      </ol>
+      <p>También puedes verlo desde el celular con la app Hotmart Sparkle.</p>
+    </div></details>
+    <details><summary>¿A quién escribo si tengo dudas?</summary><div class="resp"><p>Escribe al correo de soporte: <span class="correo">erijohabarbosa@gmail.com</span></p></div></details>
+  </div>
+</section>
+
+<footer>© 2026 tulipan.academy · Diseño Floral con Limpiapipas. Todos los derechos reservados.</footer>
+
+</body>
+</html>
